@@ -7,14 +7,15 @@
     <!-- Replace the content tag with appropriate information -->
     <!-- <meta name="description" content="DESCRIPTION META TAG"> -->
     <meta property="og:title"
-        content="Qihoo-T2X: An Efficient Proxy-Tokenizied Diffusion Transformer for Text-to-Any-Task" />
+        content="RelaCtrl: Relevance-Guided Efficient Control for Diffusion Transformers" />
     <!-- <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" /> -->
-    <meta property="og:url" content="https://qihoot2x.github.io/" />
+    <meta property="og:url" content="https://relactrl.github.io/RelaCtrl/" />
     <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-    <meta property="og:image" content="static/images/QihooT2X_pipeline.png" />
+    <!-- 
+    <meta property="og:image" content="static/images/banner.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-
+    -->
 
     <!-- <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
     <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG"> -->
@@ -26,7 +27,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>Qihoo-T2X: An Efficient Proxy-Tokenizied Diffusion Transformer for Text-to-Any-Task;</title>
+    <title>RelaCtrl: Relevance-Guided Efficient Control for Diffusion Transformers;</title>
     <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -53,7 +54,7 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title" style="font-size:45px;"><br>PT-T2I/V: An Efficient Proxy-Tokenizied Diffusion Transformer for Text-to-Image/Video-Task</h1>
+                        <h1 class="title is-1 publication-title" style="font-size:45px;"><br>RelaCtrl: Relevance-Guided Efficient Control for Diffusion Transformers</h1>
                     </div>
                 </div>
             </div>
@@ -68,14 +69,12 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            The global self-attention mechanism in diffusion transformers involves redundant computation due to the sparse and redundant nature of visual information, and the attention map of tokens within a spatial window shows significant similarity.
-                            To address this redundancy, we propose the <strong>P</strong>roxy-<strong>T</strong>okenizied <strong>D</strong>iffusion <strong>T</strong>ransformer (<strong>PT-DiT</strong>), which employs sparse representative token attention (where the number of representative tokens is much smaller than the total number of tokens) to model global visual information efficiently.
-                            Specifically, within each transformer block, we compute an averaging token from each spatial-temporal window to serve as a proxy token for that region.
-                            The global semantics are captured through the self-attention of these proxy tokens and then injected into all latent tokens via cross-attention. 
-                            Simultaneously, we introduce window and shift window attention to address the limitations in detail modeling caused by the sparse attention mechanism.
-                            Building on the well-designed PT-DiT, we further develop the <strong>PT-T2I/V</strong> family, which includes a variety of models for T2I, T2V, and T2MV tasks.
-                            Experimental results show that PT-DiT achieves competitive performance while reducing the computational complexity in both image and video generation tasks (e.g., a 48% reduction compared to DiT and a 35% reduction compared to PixArt-<em>α</em>).
-                        </p>
+                            The Diffusion Transformer plays a pivotal role in advancing text-to-image and text-to-video generation, owing primarily to its inherent scalability. However, existing controlled diffusion transformer methods incur significant parameter and computational overheads and suffer from inefficient resource allocation due to their failure to account for the varying relevance of control information across different transformer layers.
+                            To address this, we propose the Relevance-Guided Efficient Controllable Generation framework, <strong>RelaCtrl</strong>, enabling efficient and resource-optimized integration of control signals into the Diffusion Transformer.
+                            First, we evaluate the relevance of each layer in the Diffusion Transformer to the control information by assessing the "removal influence"—i.e., the impact of skipping each control layer on both the quality of generation and the control effectiveness during inference.
+			    Based on the strength of the relevance, we then tailor the positioning, parameter scale, and modeling capacity of the control layers to reduce unnecessary parameters and redundant computations. Additionally, to further improve efficiency, we replace the self-attention and MLP in the commonly used copy block with the carefully designed Two-Dimensional Shuffle Mixer (<strong>TDSM</strong>), enabling efficient implementation of both the token mixer and channel mixer.
+			    Both qualitative and quantitative experimental results demonstrate that our approach achieves superior performance with only 15% of the parameters and computational complexity compared to PixArt-<em>δ</em>.
+			</p>
                     </div>
                 </div>
             </div>
